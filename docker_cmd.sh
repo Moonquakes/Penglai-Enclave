@@ -37,7 +37,7 @@ fi
 # build penglai 
 if [[ $1 == *"qemu"* ]]; then
 	echo "Run: run penglai demo image in sPMP-supported Qemu"
-	docker run -v $(pwd):/home/penglai/penglai-enclave -w /home/penglai/penglai-enclave --rm -it ddnirvana/penglai-enclave:v0.1 bash scripts/run-qemu.sh
+	docker run -v $(pwd):/home/penglai/penglai-enclave -w /home/penglai/penglai-enclave --network=host --rm -it ddnirvana/penglai-enclave:v0.1 bash scripts/run-qemu.sh
 	exit 0
 fi
 
@@ -56,6 +56,11 @@ if [[ $1 == *"clean"* ]]; then
 	exit 0
 fi
 
+if [[ $1 == *"debug"* ]]; then
+	echo "Run: run debug docker"
+	docker run -v $(pwd):/home/penglai/penglai-enclave -w /home/penglai/penglai-enclave --network=host --rm -it jxq96/chcore-debug:v1 /bin/bash
+	exit 0
+fi
 
 print_usage
 exit 1
