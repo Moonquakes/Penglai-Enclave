@@ -185,11 +185,12 @@ $(sdk): $(vmlinux) force
 	cp $(srcdir)/sdk/demo/server/server $(copy_dir)
 	cp $(srcdir)/sdk/demo/test-caller/test-caller $(copy_dir)
 	cp $(srcdir)/sdk/demo/minimal/minimal $(copy_dir)
+	cp $(srcdir)/sdk/demo/test-cpp/test-cpp $(copy_dir)
 sdk: $(sdk)
 
 .PHONY: qemu
 qemu:
-	sudo $(qemu) -nographic -machine virt -s -S -smp 8 -m 4096M -kernel $(bbl) \
+	sudo $(qemu) -nographic -machine virt -smp 8 -m 4096M -kernel $(bbl) \
 		-drive file=$(rootfs),format=raw,id=hd0 -device virtio-blk-device,drive=hd0 \
 		-netdev user,id=net0 -device virtio-net-device,netdev=net0
 
