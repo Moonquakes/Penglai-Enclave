@@ -185,7 +185,9 @@ $(sdk): $(vmlinux) force
 	cp $(srcdir)/sdk/demo/server/server $(copy_dir)
 	cp $(srcdir)/sdk/demo/test-caller/test-caller $(copy_dir)
 	cp $(srcdir)/sdk/demo/minimal/minimal $(copy_dir)
-	cp $(srcdir)/sdk/demo/test-cpp/test-cpp $(copy_dir)
+	cp $(srcdir)/sdk/demo/label_image/label_image $(copy_dir)
+	cp $(srcdir)/sdk/demo/label_image_caller/label_image_caller $(copy_dir)
+	cp $(srcdir)/sdk/demo/label_image_server/label_image_server $(copy_dir)
 sdk: $(sdk)
 
 .PHONY: qemu

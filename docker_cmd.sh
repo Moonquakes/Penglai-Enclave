@@ -62,5 +62,11 @@ if [[ $1 == *"debug"* ]]; then
 	exit 0
 fi
 
+if [[ $1 == *"tflite"* ]]; then
+	echo "Build: building tflite static library"
+	docker run -v $(pwd):/home/penglai/penglai-enclave -w /home/penglai/penglai-enclave/tensorflow/tensorflow/lite/tools/make --network=host --rm -it ddnirvana/penglai-enclave:v0.1 ./build_riscv_lib.sh
+	exit 0
+fi
+
 print_usage
 exit 1
